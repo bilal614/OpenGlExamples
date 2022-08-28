@@ -32,6 +32,14 @@ if(OPENGL_FOUND AND GLEW_FOUND AND PKG_CONFIG_FOUND AND GLFW3_FOUND AND Boost_FO
         ${Boost_INCLUDE_DIRS}
     )
     
+    add_executable(hello_OpenGL 
+        HelloOpenGL/helloOpenGL.cpp
+    )
+
+    add_executable(first_Shader 
+        FirstShader/firstShader.cpp
+    )
+
     add_executable(moving_triangle 
         MovingTriangle/moving_triangle.cpp
     )
@@ -42,6 +50,24 @@ if(OPENGL_FOUND AND GLEW_FOUND AND PKG_CONFIG_FOUND AND GLFW3_FOUND AND Boost_FO
 
     #target_link_libraries(first_window -lglfw -lGL -lX11
     #-lXi -lXrandr -lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread)
+
+    target_link_libraries(hello_OpenGL
+        ${OPENGL_LIBRARIES}
+        ${GLEW_LIBRARIES}
+        ${GLFW3_LIBRARIES}
+        ${CMAKE_DL_LIBS}
+        -lX11
+        -pthread
+    )
+
+    target_link_libraries(first_Shader
+        ${OPENGL_LIBRARIES}
+        ${GLEW_LIBRARIES}
+        ${GLFW3_LIBRARIES}
+        ${CMAKE_DL_LIBS}
+        -lX11
+        -pthread
+    )
 
     target_link_libraries(moving_triangle
         ${OPENGL_LIBRARIES}
