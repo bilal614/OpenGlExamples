@@ -1,0 +1,6 @@
+
+namespace Asset {
+
+constexpr const char* ShaderDir{"@CMAKE_SOURCE_DIR@/shaders"};
+
+}

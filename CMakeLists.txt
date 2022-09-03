@@ -31,13 +31,22 @@ if(OPENGL_FOUND AND GLEW_FOUND AND PKG_CONFIG_FOUND AND GLFW3_FOUND AND Boost_FO
         ${GLFW3_INCLUDE_DIRS}
         ${Boost_INCLUDE_DIRS}
     )
-    
+
+    configure_file(
+        ${CMAKE_CURRENT_SOURCE_DIR}/common/include/asset.hpp.in
+        ${CMAKE_CURRENT_BINARY_DIR}/common/include/asset.hpp
+    )
+
     add_executable(hello_OpenGL 
         HelloOpenGL/helloOpenGL.cpp
     )
 
     add_executable(first_Shader 
         FirstShader/firstShader.cpp
+    )
+
+    target_include_directories(first_Shader
+        PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/common/include
     )
 
     add_executable(moving_triangle 
